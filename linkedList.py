@@ -6,18 +6,20 @@ class Node:
 class LinkedList:
 	def __init__(self):
 		self.head = Node(None, None)
+		self.size = 0
 
 	def insert(self, data):
 		curr = self.head
 		while True:
 			if curr.next is None:
 				curr.next = Node(data, None)
+				self.size += 1
 				return
 			elif curr.next.data > data:
 				curr.next = Node(data, curr.next)
+				self.size += 1
 				return
 			curr = curr.next
-		return
 
 	def delete(self, data):
 		prev = self.head
@@ -25,20 +27,26 @@ class LinkedList:
 		while True:
 			if curr.data == data:
 				prev.next = curr.next
+				self.size -= 1
 				return
 			elif curr.next is None:
 				return
 			prev = curr
 			curr = curr.next
 
+	def printSize(self):
+		print "Size:",self.size
+
 	def printAll(self):
 		curr = self.head.next
 		while True:
 			if curr is None:
+				print
 				return
-			print curr.data
+			print curr.data,
 			curr = curr.next
-		return
+
+
 
 l = LinkedList()
 l.insert(30)
@@ -53,9 +61,13 @@ l.insert(-2)
 l.insert(0)
 l.insert(-1)
 l.insert(102)
+l.printAll()
+l.printSize()
 l.delete(0)
 l.delete(102)
 l.delete(-2)
 l.printAll()
+l.printSize()
+
 
 
