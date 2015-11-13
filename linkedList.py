@@ -46,8 +46,6 @@ class LinkedList:
 			print curr.data,
 			curr = curr.next
 
-
-
 l = LinkedList()
 l.insert(30)
 l.insert(32)
