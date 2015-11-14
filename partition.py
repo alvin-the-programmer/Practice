@@ -26,7 +26,7 @@ class LinkedList:
 	def getHead(self):
 		return self.head
 
-def parition(head, item):
+def partition(head, item):
 	less = LinkedList()
 	more = LinkedList()
 	curr = head
@@ -54,6 +54,6 @@ l.insert(4)
 l.insert(1)
 l.insert(9)
 l.printList()
-parition(l.getHead(), 5)
+partition(l.getHead(), 5)
 
 
