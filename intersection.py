@@ -40,9 +40,9 @@ class LinkedList:
 # or return false if no intersection
 def getIntersection(list1, list2):
 	a = list1.getHead()
-	ids = []
+	ids = set()
 	while a is not None:
-		ids.append(id(a))
+		ids.add(id(a))
 		a = a.next
 	b = list2.getHead()
 	while b is not None:
