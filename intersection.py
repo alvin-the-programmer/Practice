@@ -58,7 +58,9 @@ a.insert(2)
 a.insert(3)
 a.insert(4)
 a.insert(5)
+print "list a:"
 a.printList()
+print "list b:"
 b = LinkedList()
 b.insertNode(a.getHead())
 b.insert(6)
@@ -68,4 +70,5 @@ b.insert(9)
 b.insert(10)
 b.printList()
 intersectNode = getIntersection(a,b)
+print "intersection:"
 print intersectNode.data
