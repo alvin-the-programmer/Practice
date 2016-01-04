@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -6,7 +7,6 @@ const int NUM_ROWS = 8;
 const int NUM_COLS = 8;
 
 int count = 0;
-
 
 bool myBoard[NUM_ROWS][NUM_COLS];
 
@@ -19,60 +19,19 @@ void printBoard(bool board[NUM_ROWS][NUM_COLS]) {
 	} 
 }
 
-bool rowIsClear(int row, bool board[NUM_ROWS][NUM_COLS]) {
-	for(int col = 0; col < NUM_COLS; col++) {
-		if(board[row][col]) {
-			return false;
-		}
-	}
-	return true;
-}
-
-bool colIsClear(int col, bool board[NUM_ROWS][NUM_COLS]) {
-	for(int row = 0; row < NUM_ROWS; row++) {
-		if(board[row][col]) {
-			return false;
-		}
-	}
-	return true;
-}
-
-// calculating slope is better than this
-bool diagIsClear(int row, int col, bool board[NUM_ROWS][NUM_COLS]) {
-	for (int i = 0; i < NUM_ROWS; i++) {
-		if(row + i < NUM_ROWS && col + i < NUM_COLS) {
-			if(board[row + i][col + i]) {
-				return false;
-			}
-		}
-		if(row + i < NUM_ROWS && col - i < NUM_COLS && col - i > -1) {
-			if(board[row + i][col - i]) {
-				return false;
-			}
-		}
-		if(row - i < NUM_ROWS && row - i > -1 && col + i < NUM_COLS) {
-			if(board[row - i][col + i]) {
-				return false;
-			}
-		}
-		if(row - i < NUM_ROWS && row - i > -1 && col - i < NUM_COLS && col - i > -1) {
-			if(board[row - i][col - i]) {
-				return false;
-			}
-		}
-	}
-	return true;
-}
-
 bool isClear(int row, int col, bool board[NUM_ROWS][NUM_COLS]) {
-	if(!rowIsClear(row, board)) {
-		return false;
-	}
-	if(!colIsClear(col, board)) {
-		return false;
-	}
-	if(!diagIsClear(row, col, board)) {
-		return false;
+	for(int r = 0; r < NUM_ROWS; r++) {
+		for(int c = 0; c < NUM_COLS; c++) {
+			if(r == row && board[r][c]) {
+				return false;
+			}
+			if(c == col && board[r][c]) {
+				return false;
+			}
+			if(abs(row - r) == abs(col - c) && board[r][c]) {
+				return false;
+			}
+		}
 	}
 	return true;
 }
@@ -82,6 +41,7 @@ void eightQueens(int numQueens, bool board[NUM_ROWS][NUM_COLS]) {
 		count++;
 		printBoard(board);
 		cout << endl;
+		return;
 	}
 	else {
 		for(int row = numQueens; row < NUM_ROWS; row++) {
@@ -101,11 +61,10 @@ void eightQueens(int numQueens, bool board[NUM_ROWS][NUM_COLS]) {
 	}
 }
 
-
 int main() {
-	cout << "Eight Queens 8x8" << endl;
 	eightQueens(0, myBoard);
-	cout << count << endl;
+	cout << "Eight Queens 8x8." << endl;
+	cout << "Number of Possible Configurations: " << count << endl;
 
 	return 0;
 }
