@@ -37,6 +37,7 @@ bool colIsClear(int col, bool board[NUM_ROWS][NUM_COLS]) {
 	return true;
 }
 
+// calculating slope is better than this
 bool diagIsClear(int row, int col, bool board[NUM_ROWS][NUM_COLS]) {
 	for (int i = 0; i < NUM_ROWS; i++) {
 		if(row + i < NUM_ROWS && col + i < NUM_COLS) {
