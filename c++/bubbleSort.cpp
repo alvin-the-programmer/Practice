@@ -11,7 +11,6 @@ void printVec(vector<int> arr) {
 	cout<< endl;
 }
 
-
 void bubbleSort(vector<int> arr) {
 	bool changed = true;
 	while(changed) {
@@ -27,7 +26,6 @@ void bubbleSort(vector<int> arr) {
 	}
 	printVec(arr);
 }
-
 
 int main() {
 	cout << "bubble sort" << endl;
