@@ -10,7 +10,7 @@ def rmWord(chunk, word, strings, explored):
 	if not positions:
 		strings.append(chunk)
 	for i in positions:
-		newChunk = chunk[:i] +chunk[i + len(word):]
+		newChunk = chunk[:i] + chunk[i + len(word):]
 		if newChunk not in explored:
 			explored.append(newChunk);
 			rmWord(newChunk, word, strings, explored)
