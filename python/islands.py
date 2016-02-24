@@ -7,7 +7,7 @@ def numIslands(g):
 		for c in range(len(g[0])):
 			if (r,c) not in visited and g[r][c]:
 				visited.add((r,c))
-				dfs(g, r, c, visited)
+				bfs(g, r, c, visited)
 				islands += 1
 	return islands
 
@@ -17,6 +17,16 @@ def dfs(g, r, c, visited):
 	visited |= neighbors
 	for row, col in neighbors:
 		dfs(g, row, col, visited)
+
+def bfs(g, r, c, visited):
+	q = []
+	q.append((r, c))
+	while q:
+		row, col = q.pop(0)
+		neighbors = getNeighbors(g, row, col)
+		neighbors -= visited
+		visited |= neighbors
+		q.extend(neighbors)
 
 def getNeighbors(g, r, c):
 	offsets = list(product([-1, 0, 1], repeat=2))
@@ -33,8 +43,8 @@ def isValid(g, r, c):
 		return False
 
 g = [[1,0,0,1],
-	 [0,1,0,0],
+	 [1,1,0,0],
 	 [1,0,0,1],
-	 [0,0,1,1]]
+	 [1,1,1,1]]
 
 print numIslands(g)
