@@ -24,15 +24,42 @@ def dfs(root):
 			n.visited = True
 			dfs(n)
 
+one = Node(1,[])
+two = Node(2,[])
+three = Node(3,[])
+four = Node(4,[])
+five = Node(5,[])
+six = Node(6,[])
+seven = Node(7,[])
+eight = Node(8,[])
 
-eight = Node(8, [])
-seven = Node(7, [eight])
-six = Node(6, [seven])
-five = Node(5, [eight, six])
-two = Node(2, [five])
-three = Node(3, [five])
-four = Node(4, [six])
-one = Node(1, [two, three, four])
+one.neighbors = [two, three]
+three.neighbors = [four, two]
+two.neighbors = [six, one]
+eight.neighbors = [seven, six]
 
-# bfs(one)
-dfs(one)
+def isPath(a, b):
+	aq = [a]
+	bq = [b]
+	avisited = {a}
+	bvisited = {b}
+	while aq or bq:
+		bfsStep(aq, avisited)
+		bfsStep(bq, bvisited)
+		if avisited.intersection(bvisited):
+			return True
+	return False
+
+def bfsStep(q, visited):
+	print 'step'
+	size = len(q)
+	for i in range(size):
+		node = q.pop(0)
+		for n in node.neighbors:
+			if n not in visited:
+				print n.data
+				visited.add(n)
+				q.append(n)
+
+print isPath(one, eight)
+
