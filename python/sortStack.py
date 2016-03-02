@@ -20,7 +20,6 @@ class SortStack:
 		item = self.s.pop()
 		print "pop ", item
 
-
 myStack = SortStack()
 myStack.push(14)
 myStack.push(17)
@@ -42,8 +41,3 @@ myStack.pop()
 myStack.pop()
 myStack.pop()
 myStack.pop()
-
-
-
-
-
