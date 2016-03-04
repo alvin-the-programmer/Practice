@@ -46,21 +46,6 @@ class LinkedList:
 			print curr.data,
 			curr = curr.next
 
-
-def klast(k, root):
-	ans = []
-	_klast(k, root, ans)
-	return ans[0]
-
-def _klast(k, root, ans):
-	if root.next is None:
-		num = 1
-	else:
-		num = _klast(k, root.next, ans) + 1
-	if num == k:
-		ans.append(root)
-	return num
-
 l = LinkedList()
 l.insert(30)
 l.insert(32)
@@ -79,6 +64,8 @@ l.delete(102)
 l.delete(-2)
 l.printAll()
 
-print klast(9, l.head).data
+
+
+
 
 
