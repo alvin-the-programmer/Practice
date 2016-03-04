@@ -37,10 +37,12 @@ class BST:
 			self._printTree(root.left)
 			print root.data
 			self._printTree(root.right)
-
+	
 tree = BST()
 tree.insert(10)
 tree.insert(5)
 tree.insert(15)
+tree.insert(12)
+tree.insert(100)
+tree.insert(20)
 
-tree.printTree()
