@@ -21,7 +21,6 @@ bool magicIndex(int index, vector<int> a) {
 	}
 }
 
-
 int main() {
 	cout << "magic index" << endl;
 	vector<int> sortedArr = {-12,-5,5,5,5,5,10,12,16};

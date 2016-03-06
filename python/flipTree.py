@@ -4,4 +4,3 @@ def flipTree(root):
 	flipTree(root.left)
 	flipTree(root.right)
 	root.left, root.right = root.right, root.left
-	
