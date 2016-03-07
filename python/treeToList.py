@@ -1,19 +1,14 @@
-def treeToList(root):
-	nodes = []
-	inOrderList(root, nodes)
-	for i in range(0, len(nodes) - 1):
-		nodes[i].right = nodes[i + 1]
-		nodes[i + 1].left = nodes[i]
-
-def inOrderList(root, a):
+def inOrderList(root, last):
 	if root is None:
 		return
-	inOrderList(root.left, a)
-	a.append(root)
-	inOrderList(root.right, a)
+	inOrderList(root.left, last)
+	last[0].right = root 
+	root.left = last[0]
+	last[0] = root
+	inOrderList(root.right, last)
 
-def printList(root):
+def printL(root):
 	if root is None:
 		return
 	print root.data
-	printList(root.right)
+	printL(root.right)

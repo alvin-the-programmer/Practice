@@ -38,6 +38,7 @@ class BST:
 			print root.data
 			self._printTree(root.right)
 	
+
 tree = BST()
 tree.insert(10)
 tree.insert(5)
@@ -52,4 +53,6 @@ tree.insert(12)
 tree.insert(1)
 tree.insert(24)
 
-tree.printTree()
+
+
+ tree.printTree()
