@@ -1,3 +1,5 @@
+# last should be a list containing a dummy node to begin list O(1) space
+
 def inOrderList(root, last):
 	if root is None:
 		return

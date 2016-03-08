@@ -19,7 +19,6 @@ def containsAnagram2(a, b):
 	substrings = [b[i:i+len(a)] for i in range(0, len(b) - len(a) + 1)]
 	return any(Counter(subStr) == counta for subStr in substrings)
 
-
 print containsAnagram('npe','pencilcase')
 print containsAnagram2('npe','pencilcase')
 print containsAnagram('case','pencilcase')
