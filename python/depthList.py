@@ -7,8 +7,10 @@ class Lnode:
 
 def printList(head):
 	if head is None:
+		print
 		return
-	print head.data
+	print '->',
+	print head.data,
 	printList(head.next)
 
 def depthList(root):
