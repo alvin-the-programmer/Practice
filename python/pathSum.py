@@ -21,33 +21,38 @@
 # 	return count[0]
 
 def countPathSum(root, target):
-	count = 0
+	count = [0]
 	sums = {}
-	countPath(root, target, sums)
-	for l in sums.values():
-		for s in l:
-			if s == target:
-				count += 1
-	return count
+	countPath(root, target, sums, count)
+	return count[0]
 
-def pathSum(root, target, sums):
+def pathSum(root, target, sums, count):
+	if root.data == target:
+		count[0] += 1
 	if root.left is None and root.right is None:
-		sums[id(root)] = [0, root.data]
+		sums[id(root)] = [root.data]
 		return
 	if id(root) not in sums:
-		sums[id(root)] = [0]
+		sums[id(root)] = [root.data]
 	if root.left is not None:
-		sums[id(root)].extend([(root.data + s) for s in sums[id(root.left)]])
+		for s in sums[id(root.left)]:
+			thisSum = root.data + s
+			sums[id(root)].append(thisSum)
+			if thisSum == target:
+				count[0] += 1
 	if root.right is not None:
-		sums[id(root)].extend([(root.data + s) for s in sums[id(root.right)]])
+		for s in sums[id(root.right)]:
+			thisSum = root.data + s
+			sums[id(root)].append(thisSum)
+			if thisSum == target:
+				count[0] += 1
 
-def countPath(root, target, sums):
+def countPath(root, target, sums, count):
 	if root is None:
 		return
-	countPath(root.left, target, sums)
-	countPath(root.right, target, sums)
-	pathSum(root, target, sums)
-
+	countPath(root.left, target, sums, count)
+	countPath(root.right, target, sums, count)
+	pathSum(root, target, sums, count)
 
 
 

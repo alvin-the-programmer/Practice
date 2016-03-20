@@ -67,7 +67,6 @@ def slowSearch(a, c, d, m):
 	print "num checked:", checked
 	return besta
 
-
 coins = [None, 25, 15, 1]
 numCoins = 3
 
