@@ -1,5 +1,6 @@
 from random import shuffle
 from time import time
+from math import factorial
 
 class Node():
 	def __init__(self, data):
@@ -62,22 +63,46 @@ def permute(l, frontier, numChildren, childMap, count):
 				thisNumChildren[parent] += 1
 				permute(thisL, thisFrontier, thisNumChildren, childMap, count)
 
+
+def countBuilds(root):
+	if root is None:
+		return 0
+	return weave(countBuilds(root.left) * size(root.left), countBuilds(root.right) * size(root.right))
+
+def size(root):
+	if root is None:
+		return 0
+	return 1 + size(root.left) + size(root.right)
+
+def weave(a, b):
+	return factorial(a + b) / (factorial(b) * factorial(a))
+
 def answer(seq):
 	tree = Tree()
 	tree.buildTree(seq[:])
-	count = [0]
-	numChildren = {i: 0 for i in seq}
-	permute({seq[0]}, {seq[0]}, numChildren, tree.childMap, count)
-	return str(count[0])
+	# print size(tree.root)
+	print countBuilds(tree.root)
 
-print answer([5, 9, 8, 2, 1])
-print answer([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+answer([10, 5, 6, 4, 15])
+answer([10, 5, 15])
+answer([10, 5,6, 15])
+answer([5,9,8,2,1])
 
-l = [i for i in range(1, 17)]
-shuffle(l)
-start = time()
-ans = answer(l)
-end = time()
-print "time: ", end - start
-print ans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
