@@ -1,27 +1,26 @@
-import random
-import time
-
-def countWater(minHeights, level):
+def answer(heights):
 	totalWater = 0
-	for i in range(0, len(minHeights) - 1):
-		totalWater += minHeights[i + 1] - minHeights[i] - 1
+	i = 0
+	while i < len(heights) - 1:
+		lMax = i
+		# (height, index)
+		rMax = (0, -1)
+		if heights[i] > 1:
+			for j in range(i + 1, len(heights)):
+				if heights[j] >= heights[lMax]:
+					rMax = (heights[j], j)
+					i = j - 1
+					break
+				elif heights[j] >= rMax[0]:
+					rMax = (heights[j], j)
+					i = j - 1
+			totalWater += getVolume(heights, lMax, rMax[1])
+		i += 1
 	return totalWater
 
-def buildTable(heights, heightList, level):
-	newList = [index for index in heightList if heights[index] >= level]
-	return newList
-
-def answer(heights):
-	total = 0
-	heightList = [i for i in range(0, len(heights))]
-	for i in range(2, max(heights) + 1):
-		heightList = buildTable(heights, heightList, i)
-		total += countWater(heightList, i)
-	return total
-
-h = [1, 4, 2, 5, 1, 2, 3]
-j = [1, 2,3,4,5,6,7,8,9,10,9,8,7,6,5,4,3,2,1]
-
-print answer(h)
-print answer(j)
-
+def getVolume(heights, i, j):
+	displacement = 0
+	for height in heights[i + 1:j]:
+		displacement += height
+	volume =  min([heights[i], heights[j]]) * (j - i - 1)
+	return volume - displacement
