@@ -25,28 +25,20 @@ def bruteAnswer(t, n):
 	return count[0] % 123454321
 
 def answer(t, n):
-	cache = {}
-	return countNum(t, n, 0, cache)
+	currMoves = [0 for _ in range(0, n)]
+	currMoves[n - 1] = 1
+	lastMoves = [0 for _ in range(0, n)]
+	for i in range(0, t):
+		currMoves, lastMoves = lastMoves, currMoves
+		for j in range(0, n):
+			currMoves[j] = lastMoves[j]
+			if j == n - 1:
+				continue
+			if j > 0:
+				currMoves[j] += lastMoves[j - 1]
+			currMoves[j] += lastMoves[j + 1]
+			currMoves[j] %= 123454321
+	return currMoves[0]
 
-# the number of ways to get from position p to the goal (position n - 1) in t moves = 
-# number of ways to get to p - 1 in t - 1 moves + 
-# number of ways to get to p + 1 in t - 1 moves +
-# number of ways to get to p in t - 1 moves
-def countNum(t, n, p, cache):
-	key = str(t) + '/' + str(p)
-	if key in cache:
-		return cache[key]
-	if n - p == 1:
-		return 1
-	if t == 0:
-		return 0
-	count = 0
-	if p > 0:
-		count += countNum(t - 1, n, p - 1, cache)
-	if n - p > 1:
-		count += countNum(t - 1, n, p + 1, cache)
-	count += countNum(t - 1, n, p, cache)
-	cache[key] = count % 123454321
-	return cache[key]
-
-
+print bruteAnswer(15,12)
+print answer(15,12)
