@@ -1,5 +1,11 @@
 # operations using onling the addition (+) operator
 
+def abs(a):
+	if a < 0:
+		return negate(a)
+	else:
+		return a
+
 def negate(a):
 	if a < 0:
 		increment = 1
@@ -8,8 +14,12 @@ def negate(a):
 	else:
 		return 0
 	s = 0
-	for i in range(0, abs(a)):
-		s += increment
+	if a > 0:
+		for i in range(0, a):
+			s += increment
+	else:
+		for i in range(0, a, -1):
+			s += increment
 	return s
 
 def subtract(a, b):
@@ -32,3 +42,5 @@ def divide(a, b):
 	if (a < 0) ^ (b < 0):
 		i = negate(i)
 	return i
+
+print divide(81, -9)
