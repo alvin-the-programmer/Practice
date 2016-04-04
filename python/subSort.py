@@ -1,5 +1,3 @@
-
-
 def subSortSlow(a):
 	asorted = sorted(a)
 	for i in range(0, len(a)):
@@ -12,7 +10,6 @@ def subSortSlow(a):
 			break
 	return (left, right)
 # O(nlogn)
-
 
 def subSort(a):
 	for i in range(0, len(a) - 1):
@@ -36,10 +33,7 @@ def subSort(a):
 	return (left, right)
 # O(n)
 
+
 a = [6,1,2,3,4,5,7,8,9]
 print subSort(a)
 print subSortBrute(a)
-
-
-
-
