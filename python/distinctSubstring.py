@@ -1,17 +1,20 @@
 def getDistinct(s):
-	longest = ''
+	longest = s[0]
 	i = 0
-	for j in range(1, len(s) + 1):
-		if len(s[i:j]) > len(longest):
-			longest = s[i:j]
-		if j < len(s):
-			repeat = s.find(s[j], i, j)
-			if repeat > -1:
-				i = repeat + 1
+	latestPos = {s[0]: 0}
+	for j in range(1, len(s)):
+		if s[j] in latestPos:
+			if latestPos[s[j]] >= i:
+				i = latestPos[s[j]] + 1
+		latestPos[s[j]] = j
+		if len(s[i:j + 1]) > len(longest):
+			longest = s[i:j + 1]
 	return longest
 
-# need to use dp insteach of find()
+# O(n) time compexity
 
+print getDistinct('aaaaaaaaaa')
+print getDistinct('aaabbaaaaa')
 print getDistinct('banana')
 print getDistinct('alvin')
-
+print getDistinct('geeksforgeeks')
