@@ -12,6 +12,7 @@ def splitSeq(s, k):
 		if Counter(s[:i]) == kcount:
 			return s[:i], s[i:]
 
+# O(n) runtime
 def buildTree(inorder, preorder, node):
 	node.data = preorder[0]
 	i = inorder.index(preorder[0])
