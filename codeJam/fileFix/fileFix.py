@@ -1,5 +1,4 @@
 # O(n^2 * l) runtime, where l is the length of the longest path
-
 def countMakes(existing, new):
 	if not existing:
 		existing = {''}
@@ -25,10 +24,35 @@ def matchDir(a, b):
 			count += 1
 	return count
 
+# O(n) runtime, where n is the the number total dirs given as input (not paths)
+# or O(nl) where l is the length max length of dir names
+def countMakesFast(existing, new):
+	dirs = {}
+	count = 0
+	for e in existing:
+		addDir(dirs, e)
+	for n in new:
+		count += addDir(dirs, n)
+	return count
+
+def addDir(dirs, new):
+	new = new.split('/')
+	new = new[1:]
+	count = 0
+	for nDir in new:
+		if nDir in dirs:
+			dirs = dirs[nDir]
+		else:
+			dirs[nDir] = {}
+			dirs = dirs[nDir]
+			count += 1
+	return count
+
 e = {'/a'}
 n = {'/a/b', '/a/c', '/b/b'}
-print countMakes(e, n)
-
+print countMakesFast(e, n)
 e = {}
 n = {'/home/gcj/finals', '/home/gcj/quals'}
-print countMakes(e, n)
+print countMakesFast(e, n)
+
+
