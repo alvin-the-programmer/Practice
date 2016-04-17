@@ -7,7 +7,7 @@ class Node:
 def findDeepest(root):
 	deepest = [-1, None]
 	traverse(root, 0, deepest)
-	print 'node: ', deepest[1].data
+	print 'node:', deepest[1].data
 	print 'depth:', deepest[0]
 	return deepest
 
@@ -19,7 +19,6 @@ def traverse(root, depth, deepest):
 		deepest[1] = root
 	traverse(root.left, depth + 1, deepest)
 	traverse(root.right, depth + 1, deepest)
-
 
 one = Node(1)
 two = Node(2)
