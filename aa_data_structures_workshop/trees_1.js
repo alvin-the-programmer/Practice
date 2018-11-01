@@ -49,7 +49,7 @@
 //        so a tree with a single node has height 0
 //
 // HOMEWORK
-//    - Reimplement you own BST class with the same methods.
+//    - Reimplement your own BST class with the same methods.
 //      - #insert
 //      - #print
 //      - #search
