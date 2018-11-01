@@ -6,12 +6,13 @@
 // DEFINITIONS:
 //
 // Graph  - a structure containing nodes and edges
+//        - a node may contain data, an edges connect two nodes
 //        - visually we use circles as nodes and arrows as edges
 //        - programmatically we use node instances as nodes and references as edges
 //
 // Tree   - a graph with no cycles
 //        - having no cycles means that we can designate a root, the root is the "start" point
-//          - if we allow cycles, who is the parent? who is the child? - so we don't allow them
+//          - if we allow cycles: who is the parent? who is the child? - This is why we don't allow them.
 //        - if we have access to the root, then we have access to the full tree,
 //          b/c there is a path to every node from the root.
 //        - having a single node is a tree
