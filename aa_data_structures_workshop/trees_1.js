@@ -1,5 +1,5 @@
 // Tree Keys to Victory :)
-//   * an tree containing 0 nodes is still a tree, although an empty tree
+//   * a tree containing 0 nodes is still a tree, although an empty tree
 //   * a tree has no cycles
 //   * a tree contains many (sub)trees, lending itself to recursion
 //
