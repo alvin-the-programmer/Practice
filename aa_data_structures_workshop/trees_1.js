@@ -7,7 +7,7 @@
 //
 // Graph  - a structure containing nodes and edges
 //        - visually we use circles as nodes and arrows as edges
-//        - programatically we use node instances as nodes and references as edges
+//        - programmatically we use node instances as nodes and references as edges
 //
 // Tree   - a graph with no cycles
 //        - having no cycles means that we can designate a root, the root is the "start" point
@@ -20,10 +20,10 @@
 //
 // Binary Tree - a tree where every node has 0, 1, or 2 children
 //
-// Binary Search Tree - binary tree where the left subtree contains values less than the root,
-//                      right subtree contains values greater than or eq to root
-//                    - AND left subtree is a binary search tree
-//                    - AND right subtree is a binary search tree
+// Binary Search Tree - a binary tree where the left subtree contains values less than the root,
+//                      the right subtree contains values greater than or eq to root...
+//                    - AND the left subtree is a binary search tree...
+//                    - AND the right subtree is a binary search tree.
 //                    - an empty tree is a binary search tree
 //                    - this means that the definition of a BST is recursive
 //
@@ -34,20 +34,32 @@
 //                      - this means that the definition of balanceness is recursive
 //
 // WRAPPING UP
-//    - Our implementation of a BST doesn't guarantee it to be balanced after any arbitrary insertions
+//    - Our implementation of a BST doesn't guarantee it to be balanced after any arbitrary insertions.
 //
 //    - How to delete any node from BST? It's pretty involved:
 //      - find the the node
 //      - keep swapping that node with it's greater child until it is a leaf (at the bottom of the tree)
 //        - swapping with the greater child always guarantees search tree property is not broken
 //      - chop off the leaf, by setting it's parent's reference to null
-//      - Try to implement the deletion algorithm above if you are up for a challenge!
 //
 //    - Tree Height Interpretations
 //      - Alvin consider's an empty binary tree as having height 0,
 //        so a tree with a single node has height 1.
 //      - Another valid interpretation is that an empty tree is height -1,
 //        so a tree with a single node has height 0
+//
+// HOMEWORK
+//    - Reimplement you own BST class with the same methods.
+//      - #insert
+//      - #print
+//      - #search
+//
+//    - Then re-reimplement it without recursion.
+//      - which one do you prefer recursive or iterative?
+//
+//    - Implement #delete(val) using the previously mentioned steps
+//
+//                                                Thanks for Attending! -AZ
 
 class Node  {
   constructor(val) {
