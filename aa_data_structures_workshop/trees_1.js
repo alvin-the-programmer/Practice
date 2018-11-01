@@ -52,6 +52,7 @@
 // HOMEWORK
 //    - Reimplement your own BST class with the same methods.
 //      - #insert
+//        - our insert logic is pretty redundant, can you DRY it up?
 //      - #print
 //      - #search
 //
