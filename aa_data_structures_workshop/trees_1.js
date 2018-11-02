@@ -37,12 +37,6 @@
 // WRAPPING UP
 //    - Our implementation of a BST doesn't guarantee it to be balanced after any arbitrary insertions.
 //
-//    - How to delete any node from BST? It's pretty involved:
-//      - find the the node
-//      - keep swapping that node with it's greater child until it is a leaf (at the bottom of the tree)
-//        - swapping with the greater child always guarantees search tree property is not broken
-//      - chop off the leaf, by setting it's parent's reference to null
-//
 //    - Tree Height Interpretations
 //      - Alvin consider's an empty binary tree as having height 0,
 //        so a tree with a single node has height 1.
@@ -58,9 +52,6 @@
 //
 //    - Then re-reimplement it without recursion.
 //      - which one do you prefer recursive or iterative?
-//
-//    - Implement #delete(val) using the previously mentioned steps
-//
 //                                                Thanks for Attending! -AZ
 
 class Node  {
