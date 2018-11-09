@@ -6,12 +6,13 @@
 // DEFINITIONS:
 //
 // Graph  - a structure containing nodes and edges
+//        - a node may contain data, an edges connect two nodes
 //        - visually we use circles as nodes and arrows as edges
 //        - programmatically we use node instances as nodes and references as edges
 //
 // Tree   - a graph with no cycles
 //        - having no cycles means that we can designate a root, the root is the "start" point
-//          - if we allow cycles, who is the parent? who is the child? - so we don't allow them
+//          - if we allow cycles: who is the parent? who is the child? - This is why we don't allow them.
 //        - if we have access to the root, then we have access to the full tree,
 //          b/c there is a path to every node from the root.
 //        - having a single node is a tree
@@ -36,12 +37,6 @@
 // WRAPPING UP
 //    - Our implementation of a BST doesn't guarantee it to be balanced after any arbitrary insertions.
 //
-//    - How to delete any node from BST? It's pretty involved:
-//      - find the the node
-//      - keep swapping that node with it's greater child until it is a leaf (at the bottom of the tree)
-//        - swapping with the greater child always guarantees search tree property is not broken
-//      - chop off the leaf, by setting it's parent's reference to null
-//
 //    - Tree Height Interpretations
 //      - Alvin consider's an empty binary tree as having height 0,
 //        so a tree with a single node has height 1.
@@ -49,16 +44,14 @@
 //        so a tree with a single node has height 0
 //
 // HOMEWORK
-//    - Reimplement you own BST class with the same methods.
+//    - Reimplement your own BST class with the same methods.
 //      - #insert
-//      - #inOrderPrint
+//        - our insert logic is pretty redundant, can you DRY it up?
+//      - #print
 //      - #search
 //
 //    - Then re-reimplement it without recursion.
 //      - which one do you prefer recursive or iterative?
-//
-//    - Implement #delete(val) using the previously mentioned steps
-//
 //                                                Thanks for Attending! -AZ
 
 class Node  {
