@@ -1,5 +1,5 @@
 // Tree Keys to Victory :)
-//   * an tree containing 0 nodes is still a tree, although an empty tree
+//   * a tree containing 0 nodes is still a tree, although an empty tree
 //   * a tree has no cycles
 //   * a tree contains many (sub)trees, lending itself to recursion
 //
@@ -51,7 +51,7 @@
 // HOMEWORK
 //    - Reimplement you own BST class with the same methods.
 //      - #insert
-//      - #print
+//      - #inOrderPrint
 //      - #search
 //
 //    - Then re-reimplement it without recursion.
@@ -74,20 +74,20 @@ class BST {
     this.root = null; // an empty tree's root is null.
   }
 
-  // print is an inOrderTraversal which is a type of depthFirstTraversal
-  print(root=this.root) {
+  // inOrderPrint is an inOrderTraversal which is a type of depthFirstTraversal
+  inOrderPrint(root=this.root) {
 
     // since we are printing a search tree,
     // we know all nodes in the left subtree are less than root,
     // and all nodes in the right subtree are greater than root.
     if (!root) return;
 
-    // so print the left subtree...
-    this.print(root.left);
+    // so inOrderPrint the left subtree...
+    this.inOrderPrint(root.left);
     // then the current root...
     console.log(root.val);
     // and finally the right subtree...
-    this.print(root.right);
+    this.inOrderPrint(root.right);
   }
 
   search(val, root=this.root) {
@@ -137,16 +137,18 @@ class BST {
   }
 }
 
-let tree = new BST();
+// let tree = new BST();
 
-tree.insert(10);
-tree.insert(5);
-tree.insert(15);
-tree.insert(3);
-tree.insert(7);
-tree.insert(17);
+// tree.insert(10);
+// tree.insert(5);
+// tree.insert(15);
+// tree.insert(3);
+// tree.insert(7);
+// tree.insert(17);
 
-tree.print();
+// tree.inOrderPrint();
 
-console.log(tree.search(7));
-console.log(tree.search(1000));
+// console.log(tree.search(7));
+// console.log(tree.search(1000));
+
+module.exports = { BST, Node };
